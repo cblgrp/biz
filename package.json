@@ -1,7 +1,7 @@
 {
-  "name": "nuxt-2.15",
-  "version": "1.0.0",
-  "description": "My perfect Nuxt.js project",
+  "name": "cb-biz",
+  "version": "1.0.0-beta1",
+  "description": "Cloudy Bay Biz.",
   "author": "Hubert Fan",
   "private": true,
   "scripts": {
