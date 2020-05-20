@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    Only for Business.
+    About page.
   </div>
 </template>
 
