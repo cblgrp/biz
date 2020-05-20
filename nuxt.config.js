@@ -1,5 +1,14 @@
+import path from 'path'
+import fs from 'fs'
+
 export default {
   mode: 'spa',
+  server: {
+    https: {
+      key: fs.readFileSync(path.resolve('/Users/Hubert', 'localhost.key')),
+      cert: fs.readFileSync(path.resolve('/Users/Hubert', 'localhost.crt'))
+    }
+  },
   /*
    ** Headers of the page
    */
@@ -15,6 +24,11 @@ export default {
       }
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    // script: [{
+    //   src: 'https://js.stripe.com/v3',
+    //   async: true,
+    // defer: true
+    // }],
   },
   /*
    ** Customize the progress-bar color
@@ -55,5 +69,8 @@ export default {
      ** You can extend webpack config here
      */
     extend(config, ctx) {}
+  },
+  generate: {
+    dir: 'docs'
   }
 }
