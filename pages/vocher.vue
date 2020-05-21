@@ -7,7 +7,8 @@
         </nuxt-link>
       </li>
     </ul>
-    <NuxtChild :key="$route.name" />
+    There are {{ list.length }} voucher{{ list.length > 1 ? 's' : '' }}.
+    <NuxtChild :key="$route.params.id" />
   </div>
 </template>
 
