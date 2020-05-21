@@ -1,5 +1,5 @@
 <template>
   <div>
-    <nuxt />
+    success!
   </div>
 </template>

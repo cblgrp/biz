@@ -5,8 +5,8 @@ export default {
   mode: 'spa',
   server: {
     https: {
-      key: fs.readFileSync(path.resolve('/Users/Hubert', 'localhost.key')),
-      cert: fs.readFileSync(path.resolve('/Users/Hubert', 'localhost.crt'))
+      key: fs.readFileSync(path.resolve('/Users/Hubert/Repos', 'localhost-key.pem')),
+      cert: fs.readFileSync(path.resolve('/Users/Hubert/Repos', 'localhost.pem'))
     }
   },
   /*

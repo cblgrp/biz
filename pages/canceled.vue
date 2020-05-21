@@ -1,5 +1,5 @@
 <template>
   <div>
-    <nuxt />
+    canceled CHECKOUT!
   </div>
 </template>
