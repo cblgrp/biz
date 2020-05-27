@@ -1,6 +1,6 @@
 <template>
-  <div>
-    payments
+  <div class="container">
+    <h4>You need the specific product id.</h4>
   </div>
 </template>
 
