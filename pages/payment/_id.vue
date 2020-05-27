@@ -36,9 +36,9 @@ import VPrice from '~/components/VPrice'
 import payments from '~/static/payments.json'
 
 export default {
-  validate({ params }) {
-    return payments.data.find(item => item.id === params.id)
-  },
+  // validate({ params }) {
+  //   return payments.data.find(item => item.id === params.id)
+  // },
   components: {
     VPrice
   },
