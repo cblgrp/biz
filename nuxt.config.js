@@ -24,7 +24,7 @@ export default {
         content: process.env.npm_package_description || ''
       }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    link: [{ rel: 'icon', type: 'image/png', href: '/favicon_32x32.png' }]
     // script: [{
     //   src: 'https://js.stripe.com/v3',
     //   async: true,
