@@ -37,7 +37,7 @@ export default {
   /*
    ** Global CSS
    */
-  css: [],
+  css: ['@/assets/app.less'],
   /*
    ** Plugins to load before mounting the App
    */
@@ -54,7 +54,18 @@ export default {
    */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    [
+      'vue-currency-filter/nuxt',
+      {
+        symbol: '',
+        thousandsSeparator: ',',
+        fractionCount: 2,
+        fractionSeparator: '.',
+        symbolPosition: 'front',
+        symbolSpacing: true
+      }
+    ]
   ],
   /*
    ** Axios module configuration
