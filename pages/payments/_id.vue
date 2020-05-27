@@ -68,6 +68,11 @@ export default {
         displayError.textContent = error.message
       }
     }
+  },
+  head() {
+    return {
+      title: this.current.title
+    }
   }
 }
 </script>
