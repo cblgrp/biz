@@ -1,12 +1,12 @@
 <template>
   <div class="container">
     <div style="text-align: center;">
-      <img :src="`/images/${id}.jpg`" style="width: 200px;" />
+      <img :src="`/images/${id}.png`" style="width: 200px;" />
       <h2 style="color: #555555;">
-        {{ current.title }}
+        {{ title }}
       </h2>
       <h3>
-        <VPrice :value="current.price" />
+        <VPrice :value="price" />
       </h3>
       <button
         id="checkout-button"
@@ -33,7 +33,6 @@
 <script>
 import { loadStripe } from '@stripe/stripe-js'
 import VPrice from '~/components/VPrice'
-import payments from '~/static/payments.json'
 
 export default {
   components: {
@@ -41,13 +40,10 @@ export default {
   },
   data() {
     return {
-      id: 'prod_HLxT0JdXxerAjO',
+      id: 'price_1GqVqGCnHoJFRoKtg1CF9tiS',
+      price: 3120,
+      title: 'full payment for 240pcs LTHR000BK30',
       stripe: null
-    }
-  },
-  computed: {
-    current() {
-      return payments.data.find(item => item.id === this.id)
     }
   },
   async mounted() {
@@ -56,7 +52,7 @@ export default {
   methods: {
     async checkout() {
       const { error } = await this.stripe.redirectToCheckout({
-        lineItems: [{ price: this.current.sku, quantity: 1 }],
+        lineItems: [{ price: this.id, quantity: 1 }],
         mode: 'payment',
         successUrl: 'https://biz.cloudybaylighting.com/success',
         cancelUrl: 'https://biz.cloudybaylighting.com/canceled'
@@ -69,7 +65,7 @@ export default {
   },
   head() {
     return {
-      title: this.current.title
+      title: this.title
     }
   }
 }
