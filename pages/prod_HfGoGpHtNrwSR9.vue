@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div style="text-align: center;">
-      <img :src="`/images/${id}.png`" style="width: 200px;" />
+      <img :src="`/images/${id}.jpg`" style="width: 200px;" />
       <h2 style="color: #555555;">
         {{ title }}
       </h2>
