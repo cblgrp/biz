@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div style="text-align: center;">
-      <img :src="`/images/${id}.jpg`" style="width: 200px;" />
+      <img :src="`/images/${current.id}.jpg`" style="width: 200px;" />
       <h2 style="color: #555555;">{{ current.title }}</h2>
       <h3>
         <VPrice :value="current.price" />
@@ -32,18 +32,20 @@ import VPrice from '~/components/VPrice'
 import payments from '~/static/payments.json'
 
 export default {
+  validate({ params }) {
+    return payments.data.find(item => item.id === params.id)
+  },
   components: {
     VPrice
   },
   data() {
     return {
-      id: 'prod_HLxT0JdXxerAjO',
-      stripe: null
+      strip: null
     }
   },
   computed: {
     current() {
-      return payments.data.find(item => item.id === this.id)
+      return payments.data.find(item => item.id === this.$route.params.id)
     }
   },
   async mounted() {
@@ -61,11 +63,6 @@ export default {
         const displayError = document.getElementById('error-message')
         displayError.textContent = error.message
       }
-    }
-  },
-  head() {
-    return {
-      title: this.current.title
     }
   }
 }
