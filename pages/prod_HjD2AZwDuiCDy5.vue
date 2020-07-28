@@ -36,7 +36,7 @@ export default {
   data() {
     return {
       id: 'prod_HjD2AZwDuiCDy5',
-      sku: 'price_1H5wHFCnHoJFRoKt069G3Okk',
+      sku: 'price_1H9kctCnHoJFRoKttKEYXgnA',
       price: 2250,
       title: 'CBOWL153CORB 300pcs 30% deposit',
       stripe: null
