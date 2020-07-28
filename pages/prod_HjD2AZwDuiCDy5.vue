@@ -2,9 +2,9 @@
   <div class="container">
     <div style="text-align: center;">
       <img :src="`/images/${id}.jpg`" style="width: 200px;" />
-      <h2 style="color: #555555;">{{ current.title }}</h2>
+      <h2 style="color: #555555;">{{ title }}</h2>
       <h3>
-        <VPrice :value="current.price" />
+        <VPrice :value="price" />
       </h3>
       <button
         id="checkout-button"
@@ -35,13 +35,11 @@ export default {
   },
   data() {
     return {
-      id: 'prod_HjD2AZwDuiCDy5',
+      id: 'prod_HfGoGpHtNrwSR9',
+      sku: 'price_1H5wHFCnHoJFRoKt069G3Okk',
+      price: 2250,
+      title: 'CBOWL153CORB 300pcs 30% deposit',
       stripe: null
-    }
-  },
-  computed: {
-    current() {
-      return payments.data.find(item => item.id === this.id)
     }
   },
   async mounted() {
@@ -50,7 +48,7 @@ export default {
   methods: {
     async checkout() {
       const { error } = await this.stripe.redirectToCheckout({
-        lineItems: [{ price: this.current.sku, quantity: 1 }],
+        lineItems: [{ price: this.sku, quantity: 1 }],
         mode: 'payment',
         successUrl: 'https://biz.cloudybaylighting.com/success',
         cancelUrl: 'https://biz.cloudybaylighting.com/canceled'
@@ -63,7 +61,7 @@ export default {
   },
   head() {
     return {
-      title: this.current.title
+      title: this.title
     }
   }
 }
