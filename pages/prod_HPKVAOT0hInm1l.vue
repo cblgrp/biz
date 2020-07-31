@@ -1,7 +1,10 @@
 <template>
   <div class="container">
     <div style="text-align: center;">
-      <img :src="`/images/${id}.png`" style="width: 200px;" />
+      <img
+        :src="`/images/${id}.png`"
+        style="width: 200px;"
+      />
       <h2 style="color: #555555;">
         {{ title }}
       </h2>
@@ -11,7 +14,15 @@
       <button
         id="checkout-button"
         role="link"
-        style="cursor: pointer; background-color:#6772E5;color:#FFF;padding:16px 24px;border:0;border-radius:4px;font-size:1em"
+        style="
+          cursor: pointer;
+          background-color: #6772e5;
+          color: #fff;
+          padding: 16px 24px;
+          border: 0;
+          border-radius: 4px;
+          font-size: 1em;
+        "
         @click="checkout"
       >
         Checkout
@@ -42,23 +53,34 @@ export default {
     return {
       id: 'price_1GqVqGCnHoJFRoKtg1CF9tiS',
       price: 3120,
-      title: 'full payment for 240pcs LTHR000BK30',
+      title:
+        'full payment for 240pcs LTHR000BK30',
       stripe: null
     }
   },
   async mounted() {
-    this.stripe = await loadStripe('pk_live_um2oZwUbuSgX1NmcXid6P9De')
+    this.stripe = await loadStripe(
+      'pk_live_um2oZwUbuSgX1NmcXid6P9De'
+    )
   },
   methods: {
     async checkout() {
-      const { error } = await this.stripe.redirectToCheckout({
-        lineItems: [{ price: this.id, quantity: 1 }],
+      const {
+        error
+      } = await this.stripe.redirectToCheckout({
+        lineItems: [
+          { price: this.id, quantity: 1 }
+        ],
         mode: 'payment',
-        successUrl: 'https://biz.cloudybaylighting.com/success',
-        cancelUrl: 'https://biz.cloudybaylighting.com/canceled'
+        successUrl:
+          'https://biz.cloudybaylighting.com/success',
+        cancelUrl:
+          'https://biz.cloudybaylighting.com/canceled'
       })
       if (error) {
-        const displayError = document.getElementById('error-message')
+        const displayError = document.getElementById(
+          'error-message'
+        )
         displayError.textContent = error.message
       }
     }

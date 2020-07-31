@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div style="text-align: center;">
-      <h3 style="color: #555555">
+      <h3 style="color: #555555;">
         - Your action has been canceled. -
       </h3>
       <div>

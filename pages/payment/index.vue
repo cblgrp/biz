@@ -1,14 +1,20 @@
 <template>
   <div class="container">
-    <h4>You need the specific product id.</h4>
+    Payment ID# is required.
   </div>
 </template>
 
 <script>
+import vochers from '~/static/vochers.json'
 export default {
+  data() {
+    return {
+      list: vochers.data
+    }
+  },
   head() {
     return {
-      title: 'Payments'
+      title: 'Vouchers'
     }
   }
 }
