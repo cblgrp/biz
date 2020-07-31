@@ -2,7 +2,7 @@
   <div class="container">
     <div style="text-align: center;">
       <img
-        :src="`/images/${current.id}.jpg`"
+        :src="`/images/${current.prod}.jpg`"
         style="width: 200px;"
       />
       <h2 style="color: #555555;">

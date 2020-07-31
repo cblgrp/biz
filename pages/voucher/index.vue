@@ -5,7 +5,7 @@
     }}.
     <ul>
       <li v-for="item in list" :key="item.id">
-        <nuxt-link :to="`/vocher/${item.id}`">
+        <nuxt-link :to="`/voucher/${item.id}`">
           # {{ item.id }} - ${{ item.price }}
         </nuxt-link>
       </li>
@@ -14,11 +14,11 @@
 </template>
 
 <script>
-import vochers from '~/static/vochers.json'
+import vouchers from '~/static/vouchers.json'
 export default {
   data() {
     return {
-      list: vochers.data
+      list: vouchers.data
     }
   },
   head() {

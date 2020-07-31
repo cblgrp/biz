@@ -15,11 +15,11 @@
 
 <script>
 import { loadStripe } from '@stripe/stripe-js'
-import vochers from '~/static/vochers.json'
+import vouchers from '~/static/vouchers.json'
 
 export default {
   validate({ params }) {
-    return vochers.data.find(
+    return vouchers.data.find(
       item => item.id === params.id
     )
   },
@@ -30,7 +30,7 @@ export default {
   },
   computed: {
     current() {
-      return vochers.data.find(
+      return vouchers.data.find(
         item => item.id === this.$route.params.id
       )
     }
