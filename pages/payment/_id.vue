@@ -39,6 +39,9 @@
         </small>
       </div>
     </div>
+    <div v-else>
+      Wrong payment ID#.
+    </div>
 
     <div id="error-message" />
   </div>
@@ -65,8 +68,6 @@ export default {
     this.current = data.find(
       item => item.id === this.$route.params.id
     )
-    if (!this.current || !this.current.id)
-      throw new Error(404)
     this.stripe = await loadStripe(
       'pk_live_um2oZwUbuSgX1NmcXid6P9De'
     )

@@ -1,12 +1,23 @@
 import path from 'path'
 import fs from 'fs'
+import payments from './static/payments.json'
 
 export default {
   mode: 'spa',
   server: {
     https: {
-      key: fs.readFileSync(path.resolve('/Users/Hubert/Repos', 'localhost-key.pem')),
-      cert: fs.readFileSync(path.resolve('/Users/Hubert/Repos', 'localhost.pem'))
+      key: fs.readFileSync(
+        path.resolve(
+          '/Users/Hubert/Repos',
+          'localhost-key.pem'
+        )
+      ),
+      cert: fs.readFileSync(
+        path.resolve(
+          '/Users/Hubert/Repos',
+          'localhost.pem'
+        )
+      )
     }
   },
   /*
@@ -17,14 +28,26 @@ export default {
     titleTemplate: '%s | Cloudy Bay Lighting Biz',
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      {
+        name: 'viewport',
+        content:
+          'width=device-width, initial-scale=1'
+      },
       {
         hid: 'description',
         name: 'description',
-        content: process.env.npm_package_description || ''
+        content:
+          process.env.npm_package_description ||
+          ''
       }
     ],
-    link: [{ rel: 'icon', type: 'image/png', href: '/favicon_32x32.png' }]
+    link: [
+      {
+        rel: 'icon',
+        type: 'image/png',
+        href: '/favicon_32x32.png'
+      }
+    ]
     // script: [{
     //   src: 'https://js.stripe.com/v3',
     //   async: true,
@@ -83,6 +106,11 @@ export default {
     extend(config, ctx) {}
   },
   generate: {
-    dir: 'docs'
+    dir: 'docs',
+    routes() {
+      return payments.data.map(
+        item => `/payment/${item.id}`
+      )
+    }
   }
 }
