@@ -1,8 +1,11 @@
 <template>
   <div class="container">
-    <div style="text-align: center;">
+    <div
+      v-if="current && current.id"
+      style="text-align: center;"
+    >
       <img
-        :src="`/images/${current.prod}.jpg`"
+        :src="`/images/${current.id}.jpg`"
         style="width: 200px;"
       />
       <h2 style="color: #555555;">
@@ -45,39 +48,25 @@
 import { loadStripe } from '@stripe/stripe-js'
 import VPrice from '~/components/VPrice'
 
-const getList = () =>
-  import('~/static/payments.json').then(m => {
-    console.log(m)
-    return m.data || m
-  })
 export default {
   components: {
     VPrice
   },
-  async validate({ params }) {
-    const list = await getList()
-    return list.find(
-      item => item.id === params.id
-    )
-  },
-  async asyncData({ req }) {
-    const list = await getList()
-    return { list }
-  },
   data() {
     return {
-      list: [],
+      current: {},
       strip: null
     }
   },
-  computed: {
-    current() {
-      return this.list.find(
-        item => item.id === this.$route.params.id
-      )
-    }
-  },
   async mounted() {
+    const { data } = await this.$axios.$get(
+      '/payments.json'
+    )
+    this.current = data.find(
+      item => item.id === this.$route.params.id
+    )
+    if (!this.current || !this.current.id)
+      throw new Error(404)
     this.stripe = await loadStripe(
       'pk_live_um2oZwUbuSgX1NmcXid6P9De'
     )
@@ -106,7 +95,7 @@ export default {
   },
   head() {
     return {
-      title: this.current.title
+      title: this.current && this.current.title
     }
   }
 }
