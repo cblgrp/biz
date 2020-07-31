@@ -2,12 +2,10 @@
   <div class="container">
     <div style="text-align: center;">
       <img
-        :src="`/images/${id}.png`"
+        :src="`/images/${id}.jpg`"
         style="width: 200px;"
       />
-      <h2 style="color: #555555;">
-        {{ title }}
-      </h2>
+      <h2 style="color: #555555;">{{ title }}</h2>
       <h3>
         <VPrice :value="price" />
       </h3>
@@ -31,9 +29,9 @@
       <br />
       <br />
       <div>
-        <small class="text-muted">
-          © Cloudy Bay Lighting
-        </small>
+        <small class="text-muted"
+          >© Cloudy Bay Lighting</small
+        >
       </div>
     </div>
 
@@ -51,11 +49,10 @@ export default {
   },
   data() {
     return {
-      id: 'prod_HPKVAOT0hInm1l',
-      sku: 'price_1GqVqGCnHoJFRoKtg1CF9tiS',
-      price: 3120,
-      title:
-        'full payment for 240pcs LTHR000BK30',
+      id: 'prod_HjD2AZwDuiCDy5',
+      sku: 'price_1H9kctCnHoJFRoKttKEYXgnA',
+      price: 2250,
+      title: 'CBOWL153CORB 300pcs 30% deposit',
       stripe: null
     }
   },

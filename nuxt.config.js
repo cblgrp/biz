@@ -1,6 +1,5 @@
 import path from 'path'
 import fs from 'fs'
-import payments from './static/payments.json'
 
 export default {
   mode: 'spa',

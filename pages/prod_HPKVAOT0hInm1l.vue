@@ -1,94 +1,13 @@
 <template>
-  <div class="container">
-    <div style="text-align: center;">
-      <img
-        :src="`/images/${id}.png`"
-        style="width: 200px;"
-      />
-      <h2 style="color: #555555;">
-        {{ title }}
-      </h2>
-      <h3>
-        <VPrice :value="price" />
-      </h3>
-      <button
-        id="checkout-button"
-        role="link"
-        style="
-          cursor: pointer;
-          background-color: #6772e5;
-          color: #fff;
-          padding: 16px 24px;
-          border: 0;
-          border-radius: 4px;
-          font-size: 1em;
-        "
-        @click="checkout"
-      >
-        Checkout
-      </button>
-      <br />
-      <br />
-      <br />
-      <div>
-        <small class="text-muted">
-          © Cloudy Bay Lighting
-        </small>
-      </div>
-    </div>
-
-    <div id="error-message" />
-  </div>
+  <div class="container"></div>
 </template>
 
 <script>
-import { loadStripe } from '@stripe/stripe-js'
-import VPrice from '~/components/VPrice'
-
 export default {
-  components: {
-    VPrice
-  },
-  data() {
-    return {
-      id: 'price_1GqVqGCnHoJFRoKtg1CF9tiS',
-      price: 3120,
-      title:
-        'full payment for 240pcs LTHR000BK30',
-      stripe: null
-    }
-  },
-  async mounted() {
-    this.stripe = await loadStripe(
-      'pk_live_um2oZwUbuSgX1NmcXid6P9De'
+  mounted() {
+    this.$router.replace(
+      '/payment/prod_HLxT0JdXxerAjO'
     )
-  },
-  methods: {
-    async checkout() {
-      const {
-        error
-      } = await this.stripe.redirectToCheckout({
-        lineItems: [
-          { price: this.id, quantity: 1 }
-        ],
-        mode: 'payment',
-        successUrl:
-          'https://biz.cloudybaylighting.com/success',
-        cancelUrl:
-          'https://biz.cloudybaylighting.com/canceled'
-      })
-      if (error) {
-        const displayError = document.getElementById(
-          'error-message'
-        )
-        displayError.textContent = error.message
-      }
-    }
-  },
-  head() {
-    return {
-      title: this.title
-    }
   }
 }
 </script>

@@ -2,7 +2,7 @@
   <div class="container">
     <div style="text-align: center;">
       <img
-        :src="`/images/${id}.png`"
+        :src="`/images/${id}.jpg`"
         style="width: 200px;"
       />
       <h2 style="color: #555555;">
@@ -51,11 +51,10 @@ export default {
   },
   data() {
     return {
-      id: 'prod_HPKVAOT0hInm1l',
-      sku: 'price_1GqVqGCnHoJFRoKtg1CF9tiS',
-      price: 3120,
-      title:
-        'full payment for 240pcs LTHR000BK30',
+      id: 'prod_HLxT0JdXxerAjO',
+      sku: 'price_HLxTkGNLBtVM87',
+      price: 2250,
+      title: 'deposit for 300pcs CBOWL153CORB',
       stripe: null
     }
   },
@@ -70,7 +69,10 @@ export default {
         error
       } = await this.stripe.redirectToCheckout({
         lineItems: [
-          { price: this.sku, quantity: 1 }
+          {
+            price: this.sku,
+            quantity: 1
+          }
         ],
         mode: 'payment',
         successUrl:
