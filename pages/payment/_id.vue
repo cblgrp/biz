@@ -46,9 +46,10 @@ import { loadStripe } from '@stripe/stripe-js'
 import VPrice from '~/components/VPrice'
 
 const getList = () =>
-  import('~/static/payments.json').then(
-    m => m.data || m
-  )
+  import('~/static/payments.json').then(m => {
+    console.log(m)
+    return m.data || m
+  })
 export default {
   components: {
     VPrice
