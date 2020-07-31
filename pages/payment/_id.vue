@@ -43,26 +43,35 @@
 
 <script>
 import { loadStripe } from '@stripe/stripe-js'
-import payments from '~/static/payments.json'
 import VPrice from '~/components/VPrice'
 
+const getList = () =>
+  import('~/static/payments.json').then(
+    m => m.data || m
+  )
 export default {
   components: {
     VPrice
   },
-  validate({ params }) {
-    return payments.data.find(
+  async validate({ params }) {
+    const list = await getList()
+    return list.find(
       item => item.id === params.id
     )
   },
+  async asyncData({ req }) {
+    const list = await getList()
+    return { list }
+  },
   data() {
     return {
+      list: [],
       strip: null
     }
   },
   computed: {
     current() {
-      return payments.data.find(
+      return this.list.find(
         item => item.id === this.$route.params.id
       )
     }

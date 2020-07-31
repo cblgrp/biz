@@ -15,13 +15,22 @@
 
 <script>
 import { loadStripe } from '@stripe/stripe-js'
-import vouchers from '~/static/vouchers.json'
+
+const getList = () =>
+  import('~/static/vouchers.json').then(
+    m => m.data || m
+  )
 
 export default {
-  validate({ params }) {
-    return vouchers.data.find(
+  async validate({ params }) {
+    const list = await getList()
+    return list.find(
       item => item.id === params.id
     )
+  },
+  async asyncData({ req }) {
+    const list = await getList()
+    return { list }
   },
   data() {
     return {
@@ -30,7 +39,7 @@ export default {
   },
   computed: {
     current() {
-      return vouchers.data.find(
+      return this.list.find(
         item => item.id === this.$route.params.id
       )
     }
