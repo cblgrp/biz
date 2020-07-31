@@ -106,11 +106,6 @@ export default {
     extend(config, ctx) {}
   },
   generate: {
-    dir: 'docs',
-    routes() {
-      return payments.data.map(
-        item => `/payment/${item.id}`
-      )
-    }
+    dir: 'docs'
   }
 }

@@ -1,18 +1,15 @@
 <template>
   <div class="container">
-    <div
-      v-if="current && current.id"
-      style="text-align: center;"
-    >
+    <div style="text-align: center;">
       <img
-        :src="`/images/${current.id}.jpg`"
+        :src="`/images/${id}.png`"
         style="width: 200px;"
       />
       <h2 style="color: #555555;">
-        {{ current.title }}
+        {{ title }}
       </h2>
       <h3>
-        <VPrice :value="current.price" />
+        <VPrice :value="price" />
       </h3>
       <button
         id="checkout-button"
@@ -39,9 +36,6 @@
         </small>
       </div>
     </div>
-    <div v-else>
-      Wrong payment ID#.
-    </div>
 
     <div id="error-message" />
   </div>
@@ -57,17 +51,14 @@ export default {
   },
   data() {
     return {
-      current: {},
-      strip: null
+      id: 'price_1GqVqGCnHoJFRoKtg1CF9tiS',
+      price: 3120,
+      title:
+        'full payment for 240pcs LTHR000BK30',
+      stripe: null
     }
   },
   async mounted() {
-    const { data } = await this.$axios.$get(
-      '/payments.json'
-    )
-    this.current = data.find(
-      item => item.id === this.$route.params.id
-    )
     this.stripe = await loadStripe(
       'pk_live_um2oZwUbuSgX1NmcXid6P9De'
     )
@@ -78,7 +69,7 @@ export default {
         error
       } = await this.stripe.redirectToCheckout({
         lineItems: [
-          { price: this.current.sku, quantity: 1 }
+          { price: this.id, quantity: 1 }
         ],
         mode: 'payment',
         successUrl:
@@ -96,7 +87,7 @@ export default {
   },
   head() {
     return {
-      title: this.current && this.current.title
+      title: this.title
     }
   }
 }
