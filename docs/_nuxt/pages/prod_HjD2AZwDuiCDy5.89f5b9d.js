@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[11],{195:function(t,n,e){"use strict";e.r(n);e(80);var r={mounted:function(){this.$router.replace("/payment/prod_HjD2AZwDuiCDy5")}},c=e(20),component=Object(c.a)(r,(function(){var t=this.$createElement;return(this._self._c||t)("div",{staticClass:"container"})}),[],!1,null,null,null);n.default=component.exports}}]);
