@@ -6,7 +6,7 @@
       :disabled="current.done"
       @click="checkout"
     >
-      Checkout ${{ current.price }}
+      Checkout
     </button>
 
     <div id="error-message" />
@@ -55,7 +55,7 @@ export default {
         error
       } = await this.stripe.redirectToCheckout({
         lineItems: [
-          { price: this.current.sku, quantity: 1 }
+          { price: this.current.price, quantity: 1 }
         ],
         mode: 'payment',
         successUrl:

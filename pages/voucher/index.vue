@@ -6,7 +6,7 @@
     <ul>
       <li v-for="item in list" :key="item.id">
         <nuxt-link :to="`/voucher/${item.id}`">
-          # {{ item.id }} - ${{ item.price }}
+          # {{ item.id }}
         </nuxt-link>
       </li>
     </ul>
