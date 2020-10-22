@@ -2,7 +2,8 @@ import path from 'path'
 import fs from 'fs'
 
 export default {
-  mode: 'spa',
+  ssr: false,
+  target: 'static',
   server: {
     https: {
       key: fs.readFileSync(
