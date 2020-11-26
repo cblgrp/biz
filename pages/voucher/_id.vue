@@ -55,7 +55,10 @@ export default {
         error
       } = await this.stripe.redirectToCheckout({
         lineItems: [
-          { price: this.current.price, quantity: 1 }
+          {
+            price: this.current.price,
+            quantity: 1
+          }
         ],
         mode: 'payment',
         successUrl:
