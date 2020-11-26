@@ -1,7 +1,5 @@
 <template>
-  <div class="container">
-    Only for Business.
-  </div>
+  <div class="container">Only for Business.</div>
 </template>
 
 <script>

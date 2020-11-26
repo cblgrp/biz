@@ -1,11 +1,11 @@
 <template>
   <div class="container">
-    <div style="text-align: center;">
+    <div style="text-align: center">
       <img
         :src="`/images/${id}.jpg`"
-        style="width: 200px;"
+        style="width: 200px"
       />
-      <h2 style="color: #555555;">{{ title }}</h2>
+      <h2 style="color: #555555">{{ title }}</h2>
       <h3>
         <VPrice :value="price" />
       </h3>

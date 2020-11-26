@@ -1,8 +1,13 @@
 <template>
   <div class="container">
-    <div style="text-align: center;">
-      <img :src="`/images/${id}.jpg`" style="width: 200px;" />
-      <h2 style="color: #555555;">{{ title }}</h2>
+    <div style="text-align: center">
+      <img
+        :src="`/images/${id}.jpg`"
+        style="width: 200px"
+      />
+      <h2 style="color: #555555">
+        {{ title }}
+      </h2>
       <h3>
         <VPrice :value="price" />
       </h3>
@@ -19,12 +24,16 @@
           font-size: 1em;
         "
         @click="checkout"
-      >Checkout</button>
+      >
+        Checkout
+      </button>
       <br />
       <br />
       <br />
       <div>
-        <small class="text-muted">© Cloudy Bay Lighting</small>
+        <small class="text-muted">
+          © Cloudy Bay Lighting
+        </small>
       </div>
     </div>
 
@@ -47,6 +56,11 @@ export default {
       price: 5250,
       title: 'balance for CBOWL153CORB 300pcs',
       stripe: null
+    }
+  },
+  head() {
+    return {
+      title: this.title
     }
   },
   async mounted() {
@@ -74,11 +88,6 @@ export default {
         )
         displayError.textContent = error.message
       }
-    }
-  },
-  head() {
-    return {
-      title: this.title
     }
   }
 }

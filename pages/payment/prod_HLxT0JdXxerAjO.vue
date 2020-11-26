@@ -1,11 +1,11 @@
 <template>
   <div class="container">
-    <div style="text-align: center;">
+    <div style="text-align: center">
       <img
         :src="`/images/${id}.jpg`"
-        style="width: 200px;"
+        style="width: 200px"
       />
-      <h2 style="color: #555555;">
+      <h2 style="color: #555555">
         {{ title }}
       </h2>
       <h3>
@@ -58,6 +58,11 @@ export default {
       stripe: null
     }
   },
+  head() {
+    return {
+      title: this.title
+    }
+  },
   async mounted() {
     this.stripe = await loadStripe(
       'pk_live_um2oZwUbuSgX1NmcXid6P9De'
@@ -86,11 +91,6 @@ export default {
         )
         displayError.textContent = error.message
       }
-    }
-  },
-  head() {
-    return {
-      title: this.title
     }
   }
 }
