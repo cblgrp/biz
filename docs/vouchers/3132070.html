@@ -41,6 +41,7 @@
      * them to Checkout.
      */
     stripe.redirectToCheckout({
+      payment_method_types: ['card'],
       lineItems: [{price: 'price_1Hy7CCCnHoJFRoKt0pMe9eli', quantity: 1}],
       mode: 'payment',
       /*
