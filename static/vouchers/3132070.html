@@ -2,31 +2,14 @@
 <script src="https://js.stripe.com/v3"></script>
 
 <!-- Create a button that your customers click to complete their purchase. Customize the styling to suit your branding. -->
-<div class="container">
-  <div style="text-align: center">
-    <h2 style="color: #555555"> WF Vorcher </h2>
-    <h3>
-    </h3>
-    <button
-      style="background-color:#6772E5;color:#FFF;padding:8px 12px;border:0;border-radius:4px;font-size:1em"
-      id="checkout-button-price_1Hy7CCCnHoJFRoKt0pMe9eli"
-      role="link"
-      type="button"
-    >
-      Checkout
-    </button>
-    <br />
-    <br />
-    <br />
-    <div>
-      <small class="text-muted"
-        >© Cloudy Bay Lighting</small
-      >
-    </div>
-  </div>
-
-  <div id="error-message" />
-</div>
+<button
+  style="background-color:#6772E5;color:#FFF;padding:8px 12px;border:0;border-radius:4px;font-size:1em"
+  id="checkout-button-price_1Hy7CCCnHoJFRoKt0pMe9eli"
+  role="link"
+  type="button"
+>
+  Checkout
+</button>
 
 <div id="error-message"></div>
 
@@ -41,7 +24,6 @@
      * them to Checkout.
      */
     stripe.redirectToCheckout({
-      payment_method_types: ['card'],
       lineItems: [{price: 'price_1Hy7CCCnHoJFRoKt0pMe9eli', quantity: 1}],
       mode: 'payment',
       /*
@@ -52,7 +34,7 @@
        * https://stripe.com/docs/payments/checkout/fulfill-orders
        */
       successUrl: 'https://biz.cloudybaylighting.com/success',
-      cancelUrl: 'https://biz.cloudybaylighting.com/canceled'
+      cancelUrl: 'https://biz.cloudybaylighting.com/canceled',
     })
     .then(function (result) {
       if (result.error) {
